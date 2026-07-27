@@ -11,7 +11,7 @@ export function Quality() {
   const points = t.raw("points") as string[];
 
   return (
-    <Section id="quality">
+    <Section id="quality" className="bg-paper/90 backdrop-blur-xl">
       <Container>
         <div className="grid items-center gap-16 lg:grid-cols-2">
           <div className="order-2 lg:order-1">

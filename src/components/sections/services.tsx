@@ -22,7 +22,7 @@ export function Services() {
   const items = t.raw("items") as { title: string; desc: string }[];
 
   return (
-    <Section id="services">
+    <Section id="services" className="bg-paper/90 backdrop-blur-xl">
       <Container>
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>

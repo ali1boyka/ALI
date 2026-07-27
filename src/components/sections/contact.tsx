@@ -21,7 +21,7 @@ export function Contact() {
   }
 
   return (
-    <Section id="contact" className="bg-paper-soft">
+    <Section id="contact" className="bg-paper-soft/90 backdrop-blur-xl">
       <Container>
         <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
