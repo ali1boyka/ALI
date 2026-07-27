@@ -78,6 +78,12 @@ body {
   color: transparent;
 }
 
+.glass-section {
+  background-color: color-mix(in srgb, var(--color-navy-950) 84%, transparent);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
 .noise-overlay {
   position: absolute;
   inset: 0;

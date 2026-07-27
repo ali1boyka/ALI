@@ -17,7 +17,7 @@ export function Products() {
   const categories = t.raw("categories") as { title: string; desc: string }[];
 
   return (
-    <Section id="products">
+    <Section id="products" className="glass-section">
       <Container>
         <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
           <div>

@@ -11,20 +11,20 @@ export function Quality() {
   const points = t.raw("points") as string[];
 
   return (
-    <Section id="quality" className="bg-paper/90 backdrop-blur-xl">
+    <Section id="quality" className="glass-section">
       <Container>
         <div className="grid items-center gap-16 lg:grid-cols-2">
           <div className="order-2 lg:order-1">
             <Reveal>
-              <Eyebrow>{t("eyebrow")}</Eyebrow>
+              <Eyebrow light>{t("eyebrow")}</Eyebrow>
             </Reveal>
             <Reveal delay={0.1}>
-              <h2 className="font-display max-w-lg text-3xl font-extrabold text-navy-900 sm:text-4xl">
+              <h2 className="font-display max-w-lg text-3xl font-extrabold text-white sm:text-4xl">
                 {t("title")}
               </h2>
             </Reveal>
             <Reveal delay={0.2}>
-              <p className="mt-5 max-w-lg text-[17px] leading-relaxed text-navy-900/60">{t("text")}</p>
+              <p className="mt-5 max-w-lg text-[17px] leading-relaxed text-white/70">{t("text")}</p>
             </Reveal>
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
               {points.map((point, i) => (
