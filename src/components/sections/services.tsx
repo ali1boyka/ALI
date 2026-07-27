@@ -45,12 +45,12 @@ export function Services() {
             const Icon = icons[i % icons.length];
             return (
               <StaggerItem key={item.title}>
-                <Card className="group h-full hover:-translate-y-1.5 hover:border-sky-500/25 hover:shadow-[0_20px_50px_-20px_rgba(33,172,214,0.35)]">
-                  <CardIcon className="transition-colors duration-300 group-hover:bg-sky-500 group-hover:text-white">
+                <Card className={`group h-full liquid-glass liquid-glass-v${(i % 4) + 1}`}>
+                  <CardIcon className="bg-white/10 text-sky-300 transition-colors duration-300 group-hover:bg-sky-500 group-hover:text-white">
                     <Icon className="h-5 w-5" />
                   </CardIcon>
-                  <h3 className="font-display text-base font-bold text-navy-900">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-navy-900/65">{item.desc}</p>
+                  <h3 className="font-display text-base font-bold text-white">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-white/70">{item.desc}</p>
                 </Card>
               </StaggerItem>
             );
