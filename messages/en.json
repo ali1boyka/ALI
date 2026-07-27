@@ -1,0 +1,146 @@
+{
+  "meta": {
+    "title": "SHODOLUX | Import & Export of Food Products, Legumes & Spices",
+    "description": "SHODOLUX is a leading trading house for the import & export of food products, legumes and spices, building trusted partnerships worldwide with uncompromising quality."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "products": "Products",
+    "whyUs": "Why Us",
+    "quality": "Quality",
+    "markets": "Global Markets",
+    "contact": "Contact",
+    "cta": "Start a Partnership"
+  },
+  "hero": {
+    "eyebrow": "International Trade, Global Standards",
+    "titleLine1": "Connecting World Markets",
+    "titleLine2": "With Uncompromising Quality",
+    "subtitle": "SHODOLUX is your trusted partner in the import and export of food products, legumes and spices — through a logistics network that reaches from ports to tables worldwide.",
+    "ctaPrimary": "Get in Touch",
+    "ctaSecondary": "Explore Services",
+    "stat1Value": "40+",
+    "stat1Label": "Export & Import Countries",
+    "stat2Value": "1200+",
+    "stat2Label": "Shipments per Year",
+    "stat3Value": "99%",
+    "stat3Label": "On-Time Delivery",
+    "scrollHint": "Scroll"
+  },
+  "about": {
+    "eyebrow": "About Us",
+    "title": "Trusted Partners in Global Trade",
+    "intro": "SHODOLUX specializes in the import and export of food products, legumes and spices, striving to build trusted commercial partnerships with clients and suppliers around the world through an unwavering commitment to quality and professionalism.",
+    "visionTitle": "Our Vision",
+    "visionText": "To become a leading name in international trade, building a global network founded on trust, quality and sustainability.",
+    "missionTitle": "Our Mission",
+    "missionText": "To deliver integrated solutions in the import and export of food products, legumes and spices, upholding the highest quality standards and meeting the needs of local, regional and global markets.",
+    "valuesTitle": "Our Values",
+    "values": [
+      { "title": "Quality", "desc": "Rigorous standards on every shipment." },
+      { "title": "Trust", "desc": "The foundation of every partnership." },
+      { "title": "Transparency", "desc": "Clarity in every transaction." },
+      { "title": "Professionalism", "desc": "Performance that meets global standards." },
+      { "title": "Commitment", "desc": "Always on time, always reliable." },
+      { "title": "Innovation", "desc": "Smarter logistics solutions." },
+      { "title": "Continuous Improvement", "desc": "Always raising the bar." },
+      { "title": "Lasting Relationships", "desc": "Partnerships built to grow." }
+    ]
+  },
+  "services": {
+    "eyebrow": "Our Services",
+    "title": "Integrated Solutions for Global Trade",
+    "subtitle": "A complete service ecosystem covering every stage of your product's journey, from source to destination.",
+    "items": [
+      { "title": "Food Products Import", "desc": "Fast, secure sourcing from the world's finest origins." },
+      { "title": "Food Products Export", "desc": "Bringing your products to global markets with confidence." },
+      { "title": "Legumes Trading", "desc": "A carefully curated supplier network for premium varieties." },
+      { "title": "Spices Trading", "desc": "Authentic spices held to strict quality standards." },
+      { "title": "Logistics Services", "desc": "An integrated, reliable shipping and warehousing network." },
+      { "title": "Supply Chain Management", "desc": "Precise control across every link of the supply chain." },
+      { "title": "International Trade", "desc": "Deep expertise in global markets and trade regulations." },
+      { "title": "Trade Partnerships", "desc": "Building strategic, long-term relationships." }
+    ]
+  },
+  "products": {
+    "eyebrow": "Our Products",
+    "title": "Product Showcase",
+    "subtitle": "A carefully selected range of premium food products, legumes and spices.",
+    "categories": [
+      { "title": "Food Products", "desc": "Diverse food products held to global quality standards." },
+      { "title": "Legumes", "desc": "The finest legumes from trusted sources." },
+      { "title": "Spices", "desc": "Authentic, high-purity spices full of flavor." }
+    ],
+    "more": "Our product range is continuously growing"
+  },
+  "whyUs": {
+    "eyebrow": "Why Us",
+    "title": "Excellence Built on Trust",
+    "items": [
+      { "title": "Global Quality", "desc": "Rigorous standards at every stage." },
+      { "title": "Competitive Pricing", "desc": "Real value at the best rates." },
+      { "title": "Trusted Supplier Network", "desc": "Carefully selected partnerships." },
+      { "title": "Fast Turnaround", "desc": "Efficient, swift execution." },
+      { "title": "On-Time Delivery", "desc": "Precision on every shipment." },
+      { "title": "High Quality Standards", "desc": "Meticulous inspection of every product." },
+      { "title": "International Trade Expertise", "desc": "Deep market knowledge." },
+      { "title": "Client Satisfaction", "desc": "Partnerships built on trust." }
+    ]
+  },
+  "quality": {
+    "eyebrow": "Quality",
+    "title": "Quality in Every Detail",
+    "text": "We place the utmost care into every stage — from product inspection to packaging and quality control — ensuring every delivery honors your trust.",
+    "points": [
+      "Rigorous product inspection",
+      "Professional packaging",
+      "Continuous quality control",
+      "Storage to the highest standards"
+    ]
+  },
+  "markets": {
+    "eyebrow": "Global Markets",
+    "title": "A Presence That Spans Continents",
+    "text": "A trade network connecting local, regional and global markets, with a continuous flow of imports and exports across continents."
+  },
+  "cta": {
+    "title": "Let's Build a Trusted Trade Partnership",
+    "text": "Reach out today and begin a business journey built on quality and trust.",
+    "button": "Get in Touch"
+  },
+  "contact": {
+    "eyebrow": "Contact Us",
+    "title": "Let's Talk About Your Next Partnership",
+    "director": "Executive Director",
+    "directorName": "Khaled Mohammed Al-Shadhli",
+    "directorNameEn": "Khaled Mohammed Al-Shadhli",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "addressLabel": "Address",
+    "addressValue": "Kingdom of Saudi Arabia",
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "subject": "Subject",
+      "message": "Your Message",
+      "submit": "Send Message",
+      "namePlaceholder": "Enter your full name",
+      "emailPlaceholder": "example@email.com",
+      "phonePlaceholder": "+966 5X XXX XXXX",
+      "subjectPlaceholder": "Subject of your message",
+      "messagePlaceholder": "Write your inquiry details here...",
+      "successTitle": "Your message has been sent",
+      "successText": "Our team will get back to you as soon as possible."
+    }
+  },
+  "footer": {
+    "tagline": "Import & export of food products, legumes and spices — to global standards.",
+    "linksTitle": "Quick Links",
+    "contactTitle": "Contact",
+    "rights": "All rights reserved to SHODOLUX",
+    "langSwitch": "العربية"
+  }
+}
