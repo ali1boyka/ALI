@@ -25,20 +25,20 @@ export function About() {
   const values = t.raw("values") as { title: string; desc: string }[];
 
   return (
-    <Section id="about" className="bg-paper-soft/90 backdrop-blur-xl">
+    <Section id="about" className="glass-section">
       <Container>
         <Reveal>
-          <Eyebrow>{t("eyebrow")}</Eyebrow>
+          <Eyebrow light>{t("eyebrow")}</Eyebrow>
         </Reveal>
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           <div>
             <Reveal>
-              <h2 className="font-display max-w-xl text-3xl leading-tight font-extrabold text-navy-900 sm:text-4xl">
+              <h2 className="font-display max-w-xl text-3xl leading-tight font-extrabold text-white sm:text-4xl">
                 {t("title")}
               </h2>
             </Reveal>
             <Reveal delay={0.1}>
-              <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-navy-900/65">
+              <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-white/70">
                 {t("intro")}
               </p>
             </Reveal>
@@ -86,7 +86,7 @@ export function About() {
 
         <div className="mt-20">
           <Reveal>
-            <h3 className="font-display mb-8 text-xl font-bold text-navy-900">{t("valuesTitle")}</h3>
+            <h3 className="font-display mb-8 text-xl font-bold text-white">{t("valuesTitle")}</h3>
           </Reveal>
           <StaggerGroup className="grid grid-cols-2 gap-4 md:grid-cols-4">
             {values.map((value, i) => {

@@ -21,15 +21,15 @@ export function Contact() {
   }
 
   return (
-    <Section id="contact" className="bg-paper-soft/90 backdrop-blur-xl">
+    <Section id="contact" className="glass-section">
       <Container>
         <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
             <Reveal>
-              <Eyebrow>{t("eyebrow")}</Eyebrow>
+              <Eyebrow light>{t("eyebrow")}</Eyebrow>
             </Reveal>
             <Reveal delay={0.1}>
-              <h2 className="font-display max-w-sm text-3xl font-extrabold text-navy-900 sm:text-4xl">
+              <h2 className="font-display max-w-sm text-3xl font-extrabold text-white sm:text-4xl">
                 {t("title")}
               </h2>
             </Reveal>
@@ -53,13 +53,13 @@ export function Contact() {
             <div className="mt-6 space-y-4">
               <Reveal delay={0.28}>
                 <div className="flex items-start gap-3">
-                  <Mail className="mt-0.5 h-5 w-5 shrink-0 text-sky-600" />
+                  <Mail className="mt-0.5 h-5 w-5 shrink-0 text-sky-400" />
                   <div>
-                    <p className="text-xs font-semibold text-navy-900/65">{t("emailLabel")}</p>
+                    <p className="text-xs font-semibold text-white/60">{t("emailLabel")}</p>
                     <a
                       href={`mailto:${t("email")}`}
                       dir="ltr"
-                      className="focus-ring rounded-sm font-medium text-navy-900 transition-colors hover:text-sky-700"
+                      className="focus-ring rounded-sm font-medium text-white transition-colors hover:text-sky-300"
                     >
                       {t("email")}
                     </a>
@@ -68,16 +68,16 @@ export function Contact() {
               </Reveal>
               <Reveal delay={0.34}>
                 <div className="flex items-start gap-3">
-                  <Phone className="mt-0.5 h-5 w-5 shrink-0 text-sky-600" />
+                  <Phone className="mt-0.5 h-5 w-5 shrink-0 text-sky-400" />
                   <div>
-                    <p className="text-xs font-semibold text-navy-900/65">{t("phoneLabel")}</p>
+                    <p className="text-xs font-semibold text-white/60">{t("phoneLabel")}</p>
                     <div className="flex flex-col gap-1">
                       {phones.map((phone) => (
                         <a
                           key={phone}
                           href={`tel:${phone}`}
                           dir="ltr"
-                          className="focus-ring rounded-sm font-medium text-navy-900 transition-colors hover:text-sky-700"
+                          className="focus-ring rounded-sm font-medium text-white transition-colors hover:text-sky-300"
                         >
                           {phone}
                         </a>
@@ -88,10 +88,10 @@ export function Contact() {
               </Reveal>
               <Reveal delay={0.4}>
                 <div className="flex items-start gap-3">
-                  <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-sky-600" />
+                  <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-sky-400" />
                   <div>
-                    <p className="text-xs font-semibold text-navy-900/65">{t("addressLabel")}</p>
-                    <p className="font-medium text-navy-900">{t("addressValue")}</p>
+                    <p className="text-xs font-semibold text-white/60">{t("addressLabel")}</p>
+                    <p className="font-medium text-white">{t("addressValue")}</p>
                   </div>
                 </div>
               </Reveal>

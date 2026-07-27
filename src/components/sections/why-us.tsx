@@ -9,16 +9,16 @@ export function WhyUs() {
   const items = t.raw("items") as { title: string; desc: string }[];
 
   return (
-    <Section id="why-us" className="bg-paper-soft/90 backdrop-blur-xl">
+    <Section id="why-us" className="glass-section">
       <Container>
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
             <div className="flex justify-center">
-              <Eyebrow>{t("eyebrow")}</Eyebrow>
+              <Eyebrow light>{t("eyebrow")}</Eyebrow>
             </div>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="font-display text-3xl font-extrabold text-navy-900 sm:text-4xl">
+            <h2 className="font-display text-3xl font-extrabold text-white sm:text-4xl">
               {t("title")}
             </h2>
           </Reveal>
