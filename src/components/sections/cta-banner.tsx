@@ -12,7 +12,7 @@ export function CtaBanner() {
   const ArrowIcon = locale === "ar" ? ArrowLeft : ArrowRight;
 
   return (
-    <section className="relative overflow-hidden bg-paper py-20">
+    <section className="relative overflow-hidden bg-paper/90 py-20 backdrop-blur-xl">
       <Container>
         <Reveal>
           <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-navy-900 to-navy-950 px-8 py-16 text-center sm:px-16">

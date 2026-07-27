@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { SectionsBackground } from "@/components/layout/sections-background";
 import { Hero } from "@/components/sections/hero";
 import { About } from "@/components/sections/about";
 import { Services } from "@/components/sections/services";
@@ -16,14 +17,16 @@ export default function Home() {
       <Navbar />
       <main id="main-content">
         <Hero />
-        <About />
-        <Services />
-        <Products />
-        <WhyUs />
-        <Quality />
-        <GlobalMarkets />
-        <CtaBanner />
-        <Contact />
+        <SectionsBackground>
+          <About />
+          <Services />
+          <Products />
+          <WhyUs />
+          <Quality />
+          <GlobalMarkets />
+          <CtaBanner />
+          <Contact />
+        </SectionsBackground>
       </main>
       <Footer />
     </>

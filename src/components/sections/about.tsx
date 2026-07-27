@@ -25,7 +25,7 @@ export function About() {
   const values = t.raw("values") as { title: string; desc: string }[];
 
   return (
-    <Section id="about" className="bg-paper-soft">
+    <Section id="about" className="bg-paper-soft/90 backdrop-blur-xl">
       <Container>
         <Reveal>
           <Eyebrow>{t("eyebrow")}</Eyebrow>

@@ -9,7 +9,7 @@ export function WhyUs() {
   const items = t.raw("items") as { title: string; desc: string }[];
 
   return (
-    <Section id="why-us" className="bg-paper-soft">
+    <Section id="why-us" className="bg-paper-soft/90 backdrop-blur-xl">
       <Container>
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>

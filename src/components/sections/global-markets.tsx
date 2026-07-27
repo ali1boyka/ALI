@@ -9,7 +9,7 @@ export function GlobalMarkets() {
   const t = useTranslations("markets");
 
   return (
-    <Section id="markets" className="overflow-hidden bg-navy-900">
+    <Section id="markets" className="overflow-hidden">
       <div
         className="absolute inset-0"
         style={{
