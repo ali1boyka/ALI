@@ -1,17 +1,12 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslations, useLocale } from "next-intl";
 import { ArrowDown, ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { GlobeGrid } from "@/components/visuals/globe-grid";
-import { Particles } from "@/components/visuals/particles";
-import { CraneSkyline } from "@/components/visuals/crane-skyline";
-import { CargoShip } from "@/components/visuals/cargo-ship";
-import { WaveLayer } from "@/components/visuals/wave-layer";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 
 export function Hero() {
@@ -21,33 +16,20 @@ export function Hero() {
   const ArrowIcon = isRtl ? ArrowLeft : ArrowRight;
 
   const sectionRef = useRef<HTMLElement>(null);
-  const globeRef = useRef<HTMLDivElement>(null);
-  const craneRef = useRef<HTMLDivElement>(null);
-  const shipRef = useRef<HTMLDivElement>(null);
-
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  const springX = useSpring(mx, { stiffness: 40, damping: 18 });
-  const springY = useSpring(my, { stiffness: 40, damping: 18 });
-  const globeX = useTransform(springX, (v) => v * 14);
-  const globeY = useTransform(springY, (v) => v * 10);
-  const shipX = useTransform(springX, (v) => v * -8);
+  const videoWrapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    function handleMove(e: MouseEvent) {
-      const { innerWidth, innerHeight } = window;
-      mx.set(e.clientX / innerWidth - 0.5);
-      my.set(e.clientY / innerHeight - 0.5);
-    }
-    window.addEventListener("mousemove", handleMove);
-    return () => window.removeEventListener("mousemove", handleMove);
-  }, [mx, my]);
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
 
-  useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       if (!sectionRef.current) return;
-      const tl = gsap.timeline({
+      gsap.to(videoWrapRef.current, {
+        scale: 1.18,
+        yPercent: 10,
+        opacity: 0.5,
+        ease: "none",
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
@@ -55,9 +37,6 @@ export function Hero() {
           scrub: 0.6,
         },
       });
-      tl.to(globeRef.current, { yPercent: -18, opacity: 0.35 }, 0)
-        .to(craneRef.current, { yPercent: -30, opacity: 0.4 }, 0)
-        .to(shipRef.current, { yPercent: -45, opacity: 0.2 }, 0);
     }, sectionRef);
     return () => ctx.revert();
   }, []);
@@ -68,54 +47,48 @@ export function Hero() {
       id="home"
       className="relative flex min-h-[100svh] items-center overflow-hidden bg-navy-950"
     >
+      <div ref={videoWrapRef} className="absolute inset-0">
+        <video
+          className="animate-slow-zoom h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/images/hero-poster.jpg"
+          aria-hidden
+        >
+          <source src="/videos/hero-video.mp4" type='video/mp4; codecs="avc1.640029"' />
+          <source src="/videos/hero-video.webm" type='video/webm; codecs="vp9"' />
+        </video>
+      </div>
+
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(180deg, #050e1e 0%, #08152b 42%, #0d2140 62%, #050e1e 100%)",
+            "linear-gradient(180deg, rgba(5,14,30,0.75) 0%, rgba(5,14,30,0.5) 38%, rgba(5,14,30,0.62) 68%, rgba(5,14,30,0.92) 100%)",
         }}
       />
       <div
-        className="absolute inset-x-0 top-[38%] h-[45%]"
+        className="absolute inset-x-0 bottom-0 h-2/3"
         style={{
           background:
-            "radial-gradient(60% 100% at 50% 0%, rgba(33,172,214,0.28) 0%, rgba(33,172,214,0) 70%)",
+            "linear-gradient(0deg, rgba(5,14,30,0.9) 0%, rgba(5,14,30,0) 100%)",
         }}
       />
-      <div className="absolute -left-40 top-10 h-96 w-96 rounded-full bg-sky-500/10 blur-[100px]" />
-      <div className="absolute -right-32 top-1/3 h-80 w-80 rounded-full bg-sky-400/10 blur-[110px]" />
-
-      <motion.div
-        ref={globeRef}
-        style={{ x: globeX, y: globeY }}
-        className="absolute -right-16 top-1/2 h-[130%] w-[85%] -translate-y-1/2 opacity-60 md:right-[-4%] md:w-[60%]"
-      >
-        <GlobeGrid />
-      </motion.div>
-
-      <Particles />
-
-      <div ref={craneRef} className="absolute inset-x-0 bottom-[18%] h-40 opacity-70 md:h-56">
-        <CraneSkyline />
-      </div>
-
-      <motion.div
-        ref={shipRef}
-        style={{ x: shipX }}
-        className="absolute inset-x-0 bottom-[10%] h-28 opacity-90 md:h-40"
-      >
-        <CargoShip className="ms-auto max-w-3xl" />
-      </motion.div>
-
-      <div className="absolute inset-x-0 bottom-0 h-28 md:h-36">
-        <div className="animate-drift absolute inset-y-0 left-0 h-full">
-          <WaveLayer fill="#08152b" opacity={0.9} />
-        </div>
-        <div className="animate-drift absolute inset-y-0 left-0 h-full" style={{ animationDuration: "55s", animationDirection: "reverse" }}>
-          <WaveLayer fill="#050e1e" opacity={1} />
-        </div>
-      </div>
-
+      <div
+        className="absolute inset-x-0 top-0 h-40"
+        style={{
+          background: "linear-gradient(180deg, rgba(5,14,30,0.55) 0%, rgba(5,14,30,0) 100%)",
+        }}
+      />
+      <div
+        className="absolute inset-x-0 top-1/3 h-1/2 opacity-70"
+        style={{
+          background:
+            "radial-gradient(60% 100% at 50% 20%, rgba(33,172,214,0.22) 0%, rgba(33,172,214,0) 70%)",
+        }}
+      />
       <div className="noise-overlay" />
 
       <div className="container-shodolux relative z-10 pt-20">
@@ -134,7 +107,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="block"
+              className="block drop-shadow-[0_2px_20px_rgba(0,0,0,0.35)]"
             >
               {t("titleLine1")}
             </motion.span>
@@ -152,7 +125,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.5 }}
-            className="mt-6 max-w-xl text-lg leading-relaxed text-white/70"
+            className="mt-6 max-w-xl text-lg leading-relaxed text-white/75"
           >
             {t("subtitle")}
           </motion.p>
@@ -163,17 +136,13 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.65 }}
             className="mt-9 flex flex-wrap items-center gap-4"
           >
-            <a href="#contact">
-              <Button variant="accent" size="lg" className="group">
-                {t("ctaPrimary")}
-                <ArrowIcon className="h-4 w-4 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
-              </Button>
-            </a>
-            <a href="#services">
-              <Button variant="outline-light" size="lg">
-                {t("ctaSecondary")}
-              </Button>
-            </a>
+            <Button href="#contact" variant="accent" size="lg" className="group">
+              {t("ctaPrimary")}
+              <ArrowIcon className="h-4 w-4 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
+            </Button>
+            <Button href="#services" variant="outline-light" size="lg">
+              {t("ctaSecondary")}
+            </Button>
           </motion.div>
 
           <motion.div
@@ -205,7 +174,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.2 }}
-        className="absolute inset-x-0 bottom-6 z-10 flex flex-col items-center gap-2 text-white/50"
+        className="absolute inset-x-0 bottom-6 z-10 hidden flex-col items-center gap-2 text-white/50 sm:flex"
       >
         <span className="text-[11px] tracking-[0.2em] uppercase">{t("scrollHint")}</span>
         <motion.span

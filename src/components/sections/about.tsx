@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import {
   ShieldCheck,
@@ -41,6 +42,24 @@ export function About() {
                 {t("intro")}
               </p>
             </Reveal>
+            <Reveal delay={0.15}>
+              <div className="relative mt-8 aspect-[16/10] w-full overflow-hidden rounded-3xl shadow-soft">
+                <Image
+                  src="/images/about/about-port.png"
+                  alt={t("imageAlt")}
+                  fill
+                  sizes="(min-width: 1024px) 45vw, 100vw"
+                  className="object-cover transition-transform duration-700 hover:scale-105"
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      "linear-gradient(180deg, rgba(8,21,43,0) 55%, rgba(8,21,43,0.45) 100%)",
+                  }}
+                />
+              </div>
+            </Reveal>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
@@ -77,7 +96,7 @@ export function About() {
                   <div className="group h-full rounded-2xl border border-navy-900/6 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_-16px_rgba(8,21,43,0.18)]">
                     <Icon className="h-5 w-5 text-sky-600 transition-transform duration-300 group-hover:scale-110" />
                     <p className="mt-3 text-sm font-bold text-navy-900">{value.title}</p>
-                    <p className="mt-1 text-xs leading-relaxed text-navy-900/50">{value.desc}</p>
+                    <p className="mt-1 text-xs leading-relaxed text-navy-900/65">{value.desc}</p>
                   </div>
                 </StaggerItem>
               );

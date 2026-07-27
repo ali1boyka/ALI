@@ -28,13 +28,13 @@ export function WhyUs() {
           {items.map((item, i) => (
             <StaggerItem key={item.title}>
               <div className="group h-full bg-white p-7 transition-colors duration-300 hover:bg-navy-900">
-                <span className="font-display text-sky-500 text-sm font-bold">
+                <span className="font-display text-sky-700 text-sm font-bold transition-colors duration-300 group-hover:text-sky-300">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <h3 className="font-display mt-3 text-base font-bold text-navy-900 transition-colors duration-300 group-hover:text-white">
                   {item.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-navy-900/55 transition-colors duration-300 group-hover:text-white/60">
+                <p className="mt-2 text-sm leading-relaxed text-navy-900/65 transition-colors duration-300 group-hover:text-white/70">
                   {item.desc}
                 </p>
               </div>

@@ -50,7 +50,7 @@ export function Services() {
                     <Icon className="h-5 w-5" />
                   </CardIcon>
                   <h3 className="font-display text-base font-bold text-navy-900">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-navy-900/55">{item.desc}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-navy-900/65">{item.desc}</p>
                 </Card>
               </StaggerItem>
             );

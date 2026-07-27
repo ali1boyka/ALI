@@ -8,6 +8,7 @@ Premium bilingual (Arabic/English) corporate website for SHODOLUX, an import & e
 - Tailwind CSS v4
 - next-intl (routing, RTL/LTR switching, `/ar` and `/en`)
 - Framer Motion + GSAP (ScrollTrigger) for scroll/parallax/micro-interactions
+- `sharp` for on-demand image optimization (WebP/AVIF, responsive sizes) via `next/image`
 - Hand-built UI primitives (no external component registry dependency)
 
 ## Getting started
@@ -28,15 +29,19 @@ npm run lint    # eslint
 
 - `src/app/[locale]/` — routes, root layout (fonts, `<html lang dir>`, metadata)
 - `src/i18n/` — next-intl routing/config/navigation
-- `messages/ar.json`, `messages/en.json` — all site copy
+- `messages/ar.json`, `messages/en.json` — all site copy + contact details
 - `src/components/sections/` — page sections (Hero, About, Services, Products, WhyUs, Quality, GlobalMarkets, CTA, Contact)
-- `src/components/visuals/` — hand-drawn SVG scene layers (logo, globe/trade-routes, port cranes, cargo ship, waves, quality badge)
+- `src/components/visuals/logo.tsx` — real logo, rendered via `next/image`
 - `src/components/ui/` — Button, Card, Input/Textarea, Section, Reveal (Framer Motion), AnimatedCounter
+- `public/` — real brand assets: logo, hero video (+ WebP-era poster), and section photography (about/quality/global-markets/products)
+
+## Media assets
+
+- **Hero video**: `public/videos/hero-video.mp4` — re-encoded from the original source (H.264, audio stripped, faststart, ~4.3 MB) for fast autoplay. `hero-video.webm` (VP9) is included as a fallback for browsers without H.264 support. `public/images/hero-poster.jpg` is shown instantly while the video loads.
+- **Logo**: `public/logo/shodolux-logo.png` is the real brand mark, used in the navbar, footer, and as the generated favicon/apple-touch-icon (`src/app/icon.png`, `src/app/apple-icon.png`).
+- **Photography**: all section photos are the real assets provided (no stock/placeholder images) and are served through `next/image`, which generates resized, modern-format (WebP/AVIF) variants on request — e.g. a ~1.9 MB source PNG is served at ~27 KB for a typical card size.
 
 ## Known follow-ups
 
-- **Logo**: the mark in `src/components/visuals/logo.tsx` is a recreation based on the brand's color palette, not the original artwork file. Drop the real logo (SVG preferred) into `public/` and swap it in if pixel-perfect fidelity is needed.
-- **Imagery**: all visuals are hand-built SVG/CSS (no photography), per the no-stock-photo requirement. If photorealistic commercial photography is wanted later, wire up an image-generation API key and swap the relevant sections.
-- **Contact form**: the form is client-side only (simulated submit). Wire it to a real endpoint (API route + email service, or a form backend) to actually receive messages.
-- **Placeholder contact details**: email/phone in `messages/*.json` and `contact.tsx`/`footer.tsx` are placeholders — replace with real company contact info.
-- **Domain**: `sitemap.ts` and `robots.ts` use `https://www.shodolux.com` as a placeholder — update once the real domain is live.
+- **Contact form**: client-side only (simulated submit) — needs a real backend/email service to actually deliver messages.
+- **Domain**: `sitemap.ts`/`robots.ts` use `https://www.shodolux.com` as a placeholder until the real domain is live.

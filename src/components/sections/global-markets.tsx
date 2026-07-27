@@ -1,9 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Section, Container, Eyebrow } from "@/components/ui/section";
 import { Reveal } from "@/components/ui/reveal";
-import { GlobeGrid } from "@/components/visuals/globe-grid";
 
 export function GlobalMarkets() {
   const t = useTranslations("markets");
@@ -18,9 +18,18 @@ export function GlobalMarkets() {
         }}
       />
       <Container className="relative grid items-center gap-10 lg:grid-cols-2">
-        <div className="relative h-72 sm:h-96 lg:h-[26rem]">
-          <GlobeGrid />
-        </div>
+        <Reveal delay={0.05}>
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-glow">
+            <Image
+              src="/images/global/global-markets.png"
+              alt={t("imageAlt")}
+              fill
+              sizes="(min-width: 1024px) 45vw, 100vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/10" />
+          </div>
+        </Reveal>
         <div>
           <Reveal>
             <Eyebrow light>{t("eyebrow")}</Eyebrow>
