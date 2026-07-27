@@ -73,12 +73,12 @@ export function About() {
               </Card>
             </Reveal>
             <Reveal delay={0.25}>
-              <Card>
-                <CardIcon>
+              <Card className="liquid-glass liquid-glass-v2">
+                <CardIcon className="bg-white/10 text-sky-300">
                   <Target className="h-5 w-5" />
                 </CardIcon>
-                <h3 className="font-display text-lg font-bold text-navy-900">{t("missionTitle")}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-navy-900/60">{t("missionText")}</p>
+                <h3 className="font-display text-lg font-bold text-white">{t("missionTitle")}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-white/70">{t("missionText")}</p>
               </Card>
             </Reveal>
           </div>
@@ -93,10 +93,10 @@ export function About() {
               const Icon = valueIcons[i % valueIcons.length];
               return (
                 <StaggerItem key={value.title}>
-                  <div className="group h-full rounded-2xl border border-navy-900/6 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_-16px_rgba(8,21,43,0.18)]">
-                    <Icon className="h-5 w-5 text-sky-600 transition-transform duration-300 group-hover:scale-110" />
-                    <p className="mt-3 text-sm font-bold text-navy-900">{value.title}</p>
-                    <p className="mt-1 text-xs leading-relaxed text-navy-900/65">{value.desc}</p>
+                  <div className={`group h-full rounded-2xl liquid-glass liquid-glass-v${(i % 4) + 1} p-5`}>
+                    <Icon className="h-5 w-5 text-sky-400 transition-transform duration-300 group-hover:scale-110" />
+                    <p className="mt-3 text-sm font-bold text-white">{value.title}</p>
+                    <p className="mt-1 text-xs leading-relaxed text-white/70">{value.desc}</p>
                   </div>
                 </StaggerItem>
               );
