@@ -1,10 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { CheckCircle2 } from "lucide-react";
 import { Section, Container, Eyebrow } from "@/components/ui/section";
 import { Reveal } from "@/components/ui/reveal";
-import { QualityBadge } from "@/components/visuals/quality-badge";
 
 export function Quality() {
   const t = useTranslations("quality");
@@ -38,8 +38,22 @@ export function Quality() {
             </div>
           </div>
           <Reveal delay={0.15} className="order-1 lg:order-2">
-            <div className="animate-float-slow mx-auto max-w-md">
-              <QualityBadge />
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-soft">
+              <Image
+                src="/images/quality/quality-control.png"
+                alt={t("title")}
+                fill
+                sizes="(min-width: 1024px) 45vw, 100vw"
+                className="object-cover"
+              />
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(160deg, rgba(33,172,214,0.16) 0%, rgba(8,21,43,0) 45%)",
+                }}
+              />
+              <div className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/10" />
             </div>
           </Reveal>
         </div>

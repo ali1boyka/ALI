@@ -71,6 +71,7 @@
     "categories": [
       { "title": "Food Products", "desc": "Diverse food products held to global quality standards." },
       { "title": "Legumes", "desc": "The finest legumes from trusted sources." },
+      { "title": "Rice", "desc": "Premium rice, carefully selected from the finest sources." },
       { "title": "Spices", "desc": "Authentic, high-purity spices full of flavor." }
     ],
     "more": "Our product range is continuously growing"
@@ -119,7 +120,9 @@
     "emailLabel": "Email",
     "phoneLabel": "Phone",
     "addressLabel": "Address",
-    "addressValue": "Kingdom of Saudi Arabia",
+    "addressValue": "Yemen - Aden - Old Enma City",
+    "email": "shodolux@gmail.com",
+    "phones": ["+25377117868", "+967782921248", "+967773807126", "+967730312595", "+967779619573"],
     "form": {
       "name": "Full Name",
       "email": "Email Address",
@@ -129,7 +132,7 @@
       "submit": "Send Message",
       "namePlaceholder": "Enter your full name",
       "emailPlaceholder": "example@email.com",
-      "phonePlaceholder": "+966 5X XXX XXXX",
+      "phonePlaceholder": "+967 7X XXX XXXX",
       "subjectPlaceholder": "Subject of your message",
       "messagePlaceholder": "Write your inquiry details here...",
       "successTitle": "Your message has been sent",

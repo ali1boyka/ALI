@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 export function Contact() {
   const t = useTranslations("contact");
   const tf = useTranslations("contact.form");
+  const phones = t.raw("phones") as string[];
   const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
 
   function handleSubmit(e: FormEvent) {
@@ -52,23 +53,36 @@ export function Contact() {
             <div className="mt-6 space-y-4">
               <Reveal delay={0.28}>
                 <div className="flex items-start gap-3">
-                  <Mail className="mt-0.5 h-5 w-5 text-sky-600" />
+                  <Mail className="mt-0.5 h-5 w-5 shrink-0 text-sky-600" />
                   <div>
                     <p className="text-xs font-semibold text-navy-900/45">{t("emailLabel")}</p>
-                    <p dir="ltr" className="text-end font-medium text-navy-900 rtl:text-end">
-                      info@shodolux.com
-                    </p>
+                    <a
+                      href={`mailto:${t("email")}`}
+                      dir="ltr"
+                      className="font-medium text-navy-900 transition-colors hover:text-sky-600"
+                    >
+                      {t("email")}
+                    </a>
                   </div>
                 </div>
               </Reveal>
               <Reveal delay={0.34}>
                 <div className="flex items-start gap-3">
-                  <Phone className="mt-0.5 h-5 w-5 text-sky-600" />
+                  <Phone className="mt-0.5 h-5 w-5 shrink-0 text-sky-600" />
                   <div>
                     <p className="text-xs font-semibold text-navy-900/45">{t("phoneLabel")}</p>
-                    <p dir="ltr" className="font-medium text-navy-900">
-                      +966 11 000 0000
-                    </p>
+                    <div className="flex flex-col gap-1">
+                      {phones.map((phone) => (
+                        <a
+                          key={phone}
+                          href={`tel:${phone}`}
+                          dir="ltr"
+                          className="font-medium text-navy-900 transition-colors hover:text-sky-600"
+                        >
+                          {phone}
+                        </a>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </Reveal>

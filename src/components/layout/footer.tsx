@@ -14,6 +14,7 @@ export function Footer() {
   const t = useTranslations("footer");
   const nav = useTranslations("nav");
   const contact = useTranslations("contact");
+  const phones = contact.raw("phones") as string[];
 
   return (
     <footer className="relative overflow-hidden bg-navy-950 pt-20 pb-8">
@@ -52,15 +53,21 @@ export function Footer() {
             </h4>
             <ul className="mt-5 space-y-3 text-sm text-white/60">
               <li className="flex items-center gap-2">
-                <Mail className="h-4 w-4 text-sky-400" />
-                <span dir="ltr">info@shodolux.com</span>
+                <Mail className="h-4 w-4 shrink-0 text-sky-400" />
+                <a href={`mailto:${contact("email")}`} dir="ltr" className="transition-colors hover:text-sky-300">
+                  {contact("email")}
+                </a>
               </li>
-              <li className="flex items-center gap-2">
-                <Phone className="h-4 w-4 text-sky-400" />
-                <span dir="ltr">+966 11 000 0000</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-sky-400" />
+              {phones.map((phone) => (
+                <li key={phone} className="flex items-center gap-2">
+                  <Phone className="h-4 w-4 shrink-0 text-sky-400" />
+                  <a href={`tel:${phone}`} dir="ltr" className="transition-colors hover:text-sky-300">
+                    {phone}
+                  </a>
+                </li>
+              ))}
+              <li className="flex items-start gap-2">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-sky-400" />
                 <span>{contact("addressValue")}</span>
               </li>
             </ul>

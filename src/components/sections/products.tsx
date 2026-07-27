@@ -1,15 +1,15 @@
 "use client";
 
+import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { Wheat, Soup, Apple } from "lucide-react";
 import { Section, Container, Eyebrow } from "@/components/ui/section";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui/reveal";
 
-const icons = [Apple, Wheat, Soup];
-const patterns = [
-  "radial-gradient(circle at 30% 20%, rgba(82,200,230,0.35), transparent 55%)",
-  "radial-gradient(circle at 70% 30%, rgba(33,172,214,0.32), transparent 55%)",
-  "radial-gradient(circle at 50% 70%, rgba(143,224,242,0.35), transparent 55%)",
+const productImages = [
+  "/images/products/food-products.png",
+  "/images/products/legumes.png",
+  "/images/products/rice.png",
+  "/images/products/spices.png",
 ];
 
 export function Products() {
@@ -35,31 +35,33 @@ export function Products() {
           </Reveal>
         </div>
 
-        <StaggerGroup className="mt-14 grid gap-6 md:grid-cols-3">
-          {categories.map((cat, i) => {
-            const Icon = icons[i % icons.length];
-            return (
-              <StaggerItem key={cat.title}>
-                <div className="group relative h-80 overflow-hidden rounded-3xl border border-white/10 bg-navy-900">
-                  <div
-                    className="absolute inset-0 transition-transform duration-700 group-hover:scale-110"
-                    style={{ background: patterns[i % patterns.length] }}
-                  />
-                  <div className="noise-overlay" />
-                  <div className="absolute inset-0 flex flex-col justify-between p-7">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/15 bg-white/5 backdrop-blur">
-                      <Icon className="h-6 w-6 text-sky-300" />
-                    </div>
-                    <div>
-                      <h3 className="font-display text-xl font-bold text-white">{cat.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-white/55">{cat.desc}</p>
-                    </div>
-                  </div>
-                  <div className="absolute inset-0 border border-white/0 transition-colors duration-500 group-hover:border-sky-400/30" />
+        <StaggerGroup className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {categories.map((cat, i) => (
+            <StaggerItem key={cat.title}>
+              <div className="group relative h-80 overflow-hidden rounded-3xl border border-white/10 bg-navy-900">
+                <Image
+                  src={productImages[i % productImages.length]}
+                  alt={cat.title}
+                  fill
+                  sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 90vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      "linear-gradient(180deg, rgba(5,14,30,0.05) 0%, rgba(5,14,30,0.15) 45%, rgba(5,14,30,0.92) 100%)",
+                  }}
+                />
+                <div className="noise-overlay opacity-[0.03]" />
+                <div className="absolute inset-0 flex flex-col justify-end p-6">
+                  <h3 className="font-display text-xl font-bold text-white">{cat.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-white/60">{cat.desc}</p>
                 </div>
-              </StaggerItem>
-            );
-          })}
+                <div className="absolute inset-0 rounded-3xl border border-white/0 transition-colors duration-500 group-hover:border-sky-400/30" />
+              </div>
+            </StaggerItem>
+          ))}
         </StaggerGroup>
 
         <Reveal delay={0.3}>

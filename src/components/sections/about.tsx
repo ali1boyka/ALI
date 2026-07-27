@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import {
   ShieldCheck,
@@ -40,6 +41,24 @@ export function About() {
               <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-navy-900/65">
                 {t("intro")}
               </p>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <div className="relative mt-8 aspect-[16/10] w-full overflow-hidden rounded-3xl shadow-soft">
+                <Image
+                  src="/images/about/about-port.png"
+                  alt={t("title")}
+                  fill
+                  sizes="(min-width: 1024px) 45vw, 100vw"
+                  className="object-cover transition-transform duration-700 hover:scale-105"
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      "linear-gradient(180deg, rgba(8,21,43,0) 55%, rgba(8,21,43,0.45) 100%)",
+                  }}
+                />
+              </div>
             </Reveal>
           </div>
 
