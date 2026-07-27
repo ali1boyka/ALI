@@ -29,12 +29,10 @@ export function CtaBanner() {
                 {t("title")}
               </h2>
               <p className="mx-auto mt-4 max-w-md text-white/60">{t("text")}</p>
-              <a href="#contact" className="mt-8 inline-block">
-                <Button variant="accent" size="lg" className="group">
-                  {t("button")}
-                  <ArrowIcon className="h-4 w-4 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
-                </Button>
-              </a>
+              <Button href="#contact" variant="accent" size="lg" className="group mt-8">
+                {t("button")}
+                <ArrowIcon className="h-4 w-4 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
+              </Button>
             </div>
           </div>
         </Reveal>

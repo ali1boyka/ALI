@@ -38,7 +38,7 @@ export function Eyebrow({
     <span
       className={cn(
         "mb-4 inline-flex items-center gap-2 text-xs font-bold tracking-[0.25em] uppercase",
-        light ? "text-sky-300" : "text-sky-600",
+        light ? "text-sky-300" : "text-sky-700",
       )}
     >
       <span className="h-px w-8 bg-current opacity-60" />

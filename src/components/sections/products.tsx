@@ -65,7 +65,7 @@ export function Products() {
         </StaggerGroup>
 
         <Reveal delay={0.3}>
-          <p className="mt-10 text-center text-sm text-white/40">{t("more")}</p>
+          <p className="mt-10 text-center text-sm text-white/55">{t("more")}</p>
         </Reveal>
       </Container>
     </Section>

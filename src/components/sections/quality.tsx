@@ -41,7 +41,7 @@ export function Quality() {
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-soft">
               <Image
                 src="/images/quality/quality-control.png"
-                alt={t("title")}
+                alt={t("imageAlt")}
                 fill
                 sizes="(min-width: 1024px) 45vw, 100vw"
                 className="object-cover"

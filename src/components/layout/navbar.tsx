@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
 import { Menu, X, Globe } from "lucide-react";
@@ -10,13 +10,13 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const navKeys = [
-  ["home", "#home"],
-  ["about", "#about"],
-  ["services", "#services"],
-  ["products", "#products"],
-  ["whyUs", "#why-us"],
-  ["quality", "#quality"],
-  ["markets", "#markets"],
+  ["home", "home"],
+  ["about", "about"],
+  ["services", "services"],
+  ["products", "products"],
+  ["whyUs", "why-us"],
+  ["quality", "quality"],
+  ["markets", "markets"],
 ] as const;
 
 export function Navbar() {
@@ -27,7 +27,9 @@ export function Navbar() {
 
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
   const { scrollY } = useScroll();
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 40);
@@ -40,6 +42,37 @@ export function Navbar() {
     };
   }, [open]);
 
+  useEffect(() => {
+    if (!open) return;
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        setOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [open]);
+
+  useEffect(() => {
+    const sections = navKeys
+      .map(([, id]) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]) setActiveSection(visible[0].target.id);
+      },
+      { rootMargin: "-40% 0px -50% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] },
+    );
+
+    sections.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <header
       className={cn(
@@ -49,19 +82,32 @@ export function Navbar() {
           : "py-6",
       )}
     >
+      <a
+        href="#main-content"
+        className="focus-ring absolute start-4 top-3 z-[100] -translate-y-24 rounded-full bg-navy-900 px-5 py-2.5 text-sm font-semibold text-white transition-transform focus:translate-y-0"
+      >
+        {t("skipToContent")}
+      </a>
       <div className="container-shodolux flex items-center justify-between">
-        <a href="#home" className="shrink-0">
-          <Logo tone={scrolled ? "dark" : "light"} />
+        <a href="#home" className="focus-ring shrink-0 rounded-full">
+          <Logo tone={scrolled ? "dark" : "light"} priority />
         </a>
 
         <nav className="hidden items-center gap-8 lg:flex">
-          {navKeys.map(([key, href]) => (
+          {navKeys.map(([key, id]) => (
             <a
               key={key}
-              href={href}
+              href={`#${id}`}
+              aria-current={activeSection === id ? "true" : undefined}
               className={cn(
-                "text-[13.5px] font-semibold tracking-wide transition-colors duration-300",
-                scrolled ? "text-navy-900/75 hover:text-sky-600" : "text-white/80 hover:text-white",
+                "focus-ring rounded-sm text-[13.5px] font-semibold tracking-wide transition-colors duration-300",
+                activeSection === id
+                  ? scrolled
+                    ? "text-sky-700"
+                    : "text-white"
+                  : scrolled
+                    ? "text-navy-900/75 hover:text-sky-700"
+                    : "text-white/80 hover:text-white",
               )}
             >
               {t(key)}
@@ -73,6 +119,7 @@ export function Navbar() {
           <Link
             href={pathname}
             locale={otherLocale}
+            hrefLang={otherLocale}
             className={cn(
               "focus-ring inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-[13px] font-semibold transition-colors",
               scrolled ? "text-navy-900/70 hover:bg-navy-900/5" : "text-white/80 hover:bg-white/10",
@@ -81,15 +128,17 @@ export function Navbar() {
             <Globe className="h-4 w-4" />
             {otherLocale === "ar" ? "العربية" : "English"}
           </Link>
-          <a href="#contact">
-            <Button variant={scrolled ? "primary" : "accent"} size="sm">
-              {t("cta")}
-            </Button>
-          </a>
+          <Button href="#contact" variant={scrolled ? "primary" : "accent"} size="sm">
+            {t("cta")}
+          </Button>
         </div>
 
         <button
-          aria-label="menu"
+          ref={menuButtonRef}
+          type="button"
+          aria-label={t("openMenu")}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
           onClick={() => setOpen(true)}
           className={cn(
             "focus-ring rounded-full p-2 lg:hidden",
@@ -103,6 +152,10 @@ export function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
+            id="mobile-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label={t("openMenu")}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -110,7 +163,15 @@ export function Navbar() {
           >
             <div className="container-shodolux flex items-center justify-between py-6">
               <Logo tone="light" />
-              <button aria-label="close" onClick={() => setOpen(false)} className="focus-ring rounded-full p-2 text-white">
+              <button
+                type="button"
+                aria-label={t("closeMenu")}
+                onClick={() => {
+                  setOpen(false);
+                  menuButtonRef.current?.focus();
+                }}
+                className="focus-ring rounded-full p-2 text-white"
+              >
                 <X className="h-6 w-6" />
               </button>
             </div>
@@ -120,13 +181,13 @@ export function Navbar() {
               variants={{ show: { transition: { staggerChildren: 0.06 } } }}
               className="container-shodolux mt-6 flex flex-col gap-1"
             >
-              {navKeys.map(([key, href]) => (
+              {navKeys.map(([key, id]) => (
                 <motion.a
                   key={key}
-                  href={href}
+                  href={`#${id}`}
                   onClick={() => setOpen(false)}
                   variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }}
-                  className="border-b border-white/10 py-4 text-xl font-bold text-white"
+                  className="focus-ring border-b border-white/10 py-4 text-xl font-bold text-white"
                 >
                   {t(key)}
                 </motion.a>
@@ -138,17 +199,16 @@ export function Navbar() {
                 <Link
                   href={pathname}
                   locale={otherLocale}
+                  hrefLang={otherLocale}
                   onClick={() => setOpen(false)}
-                  className="inline-flex items-center gap-2 text-white/70"
+                  className="focus-ring inline-flex items-center gap-2 rounded-sm text-white/70"
                 >
                   <Globe className="h-4 w-4" />
                   {otherLocale === "ar" ? "العربية" : "English"}
                 </Link>
-                <a href="#contact" onClick={() => setOpen(false)}>
-                  <Button variant="accent" className="w-full">
-                    {t("cta")}
-                  </Button>
-                </a>
+                <Button href="#contact" variant="accent" className="w-full" onClick={() => setOpen(false)}>
+                  {t("cta")}
+                </Button>
               </motion.div>
             </motion.nav>
           </motion.div>

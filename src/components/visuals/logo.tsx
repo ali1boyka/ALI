@@ -6,20 +6,22 @@ export function Logo({
   textClassName,
   tone = "dark",
   iconSize = 38,
+  priority = false,
 }: {
   className?: string;
   textClassName?: string;
   tone?: "dark" | "light";
   iconSize?: number;
+  priority?: boolean;
 }) {
   return (
     <div className={cn("flex items-center gap-2.5", className)}>
       <Image
         src="/logo/shodolux-logo.png"
-        alt="SHODOLUX"
+        alt=""
         width={512}
         height={512}
-        priority
+        priority={priority}
         style={{ width: iconSize, height: iconSize }}
         className="shrink-0 object-contain"
       />

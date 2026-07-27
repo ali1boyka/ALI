@@ -31,7 +31,7 @@ export function AnimatedCounter({
 
   return (
     <motion.span ref={ref} className={className}>
-      0{suffix}
+      {value}
     </motion.span>
   );
 }

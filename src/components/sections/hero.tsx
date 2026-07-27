@@ -19,6 +19,9 @@ export function Hero() {
   const videoWrapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       if (!sectionRef.current) return;
@@ -54,8 +57,8 @@ export function Hero() {
           poster="/images/hero-poster.jpg"
           aria-hidden
         >
-          <source src="/videos/hero-video.mp4" type="video/mp4" />
-          <source src="/videos/hero-video.webm" type="video/webm" />
+          <source src="/videos/hero-video.mp4" type='video/mp4; codecs="avc1.640029"' />
+          <source src="/videos/hero-video.webm" type='video/webm; codecs="vp9"' />
         </video>
       </div>
 
@@ -133,17 +136,13 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.65 }}
             className="mt-9 flex flex-wrap items-center gap-4"
           >
-            <a href="#contact">
-              <Button variant="accent" size="lg" className="group">
-                {t("ctaPrimary")}
-                <ArrowIcon className="h-4 w-4 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
-              </Button>
-            </a>
-            <a href="#services">
-              <Button variant="outline-light" size="lg">
-                {t("ctaSecondary")}
-              </Button>
-            </a>
+            <Button href="#contact" variant="accent" size="lg" className="group">
+              {t("ctaPrimary")}
+              <ArrowIcon className="h-4 w-4 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
+            </Button>
+            <Button href="#services" variant="outline-light" size="lg">
+              {t("ctaSecondary")}
+            </Button>
           </motion.div>
 
           <motion.div
@@ -175,7 +174,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.2 }}
-        className="absolute inset-x-0 bottom-6 z-10 flex flex-col items-center gap-2 text-white/50"
+        className="absolute inset-x-0 bottom-6 z-10 hidden flex-col items-center gap-2 text-white/50 sm:flex"
       >
         <span className="text-[11px] tracking-[0.2em] uppercase">{t("scrollHint")}</span>
         <motion.span
