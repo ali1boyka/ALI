@@ -4,14 +4,15 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Section, Container, Eyebrow } from "@/components/ui/section";
 import { Reveal } from "@/components/ui/reveal";
+import { ParallaxShape } from "@/components/ui/parallax-shape";
 
 export function GlobalMarkets() {
   const t = useTranslations("markets");
 
   return (
     <Section id="markets" className="glass-section overflow-hidden">
-      <div
-        className="absolute inset-0"
+      <ParallaxShape
+        range={18}
         style={{
           background:
             "radial-gradient(50% 60% at 50% 50%, rgba(33,172,214,0.12) 0%, rgba(33,172,214,0) 70%)",

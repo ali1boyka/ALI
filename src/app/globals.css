@@ -127,9 +127,46 @@ body {
 }
 
 .liquid-glass::after {
-  background:
-    radial-gradient(60% 35% at 50% 0%, rgba(255, 255, 255, 0.1), transparent 70%),
-    radial-gradient(45% 25% at 50% 100%, rgba(120, 200, 255, 0.08), transparent 70%);
+  background: linear-gradient(
+    115deg,
+    transparent 32%,
+    rgba(255, 255, 255, 0.06) 46%,
+    rgba(160, 215, 255, 0.07) 50%,
+    rgba(255, 255, 255, 0.06) 54%,
+    transparent 68%
+  );
+  background-size: 260% 260%;
+  background-position: -60% -60%;
+  opacity: 0.85;
+  animation: liquid-sweep 16s ease-in-out infinite;
+  transition: opacity 0.3s ease;
+}
+
+@keyframes liquid-sweep {
+  0%,
+  100% {
+    background-position: -60% -60%;
+  }
+  50% {
+    background-position: 60% 60%;
+  }
+}
+
+.liquid-glass-d1::after {
+  animation-duration: 14s;
+  animation-delay: -2s;
+}
+.liquid-glass-d2::after {
+  animation-duration: 16s;
+  animation-delay: -6s;
+}
+.liquid-glass-d3::after {
+  animation-duration: 15s;
+  animation-delay: -4s;
+}
+.liquid-glass-d4::after {
+  animation-duration: 18s;
+  animation-delay: -9s;
 }
 
 .liquid-glass-flush {
@@ -137,8 +174,24 @@ body {
 }
 
 @media (hover: hover) and (pointer: fine) {
+  .liquid-glass {
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease,
+      border-color 0.3s ease;
+  }
   .liquid-glass:hover {
     transform: translateY(-4px);
+    border-color: rgba(180, 225, 255, 0.22);
+    box-shadow:
+      inset 0 1px 1px rgba(200, 235, 255, 0.45),
+      inset 0 -1px 1px rgba(120, 200, 255, 0.22),
+      inset 0 0 32px rgba(0, 0, 0, 0.35),
+      0 14px 34px -18px rgba(0, 0, 0, 0.6),
+      0 0 20px -4px rgba(56, 189, 248, 0.25);
+  }
+  .liquid-glass:hover::after {
+    opacity: 1;
   }
   .liquid-glass-flush:hover {
     transform: none;
@@ -168,6 +221,9 @@ body {
     scroll-behavior: auto;
   }
   .animate-slow-zoom {
+    animation: none;
+  }
+  .liquid-glass::after {
     animation: none;
   }
 }

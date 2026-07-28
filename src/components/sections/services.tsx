@@ -45,7 +45,7 @@ export function Services() {
             const Icon = icons[i % icons.length];
             return (
               <StaggerItem key={item.title}>
-                <Card className="group h-full liquid-glass">
+                <Card className={`group h-full liquid-glass liquid-glass-d${(i % 4) + 1}`}>
                   <CardIcon className="bg-white/10 text-sky-300 transition-colors duration-300 group-hover:bg-sky-500 group-hover:text-white">
                     <Icon className="h-5 w-5" />
                   </CardIcon>

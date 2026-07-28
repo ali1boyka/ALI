@@ -73,7 +73,7 @@ export function About() {
               </Card>
             </Reveal>
             <Reveal delay={0.25}>
-              <Card className="liquid-glass">
+              <Card className="liquid-glass liquid-glass-d2">
                 <CardIcon className="bg-white/10 text-sky-300">
                   <Target className="h-5 w-5" />
                 </CardIcon>
@@ -93,7 +93,7 @@ export function About() {
               const Icon = valueIcons[i % valueIcons.length];
               return (
                 <StaggerItem key={value.title}>
-                  <div className="group h-full rounded-2xl liquid-glass p-5">
+                  <div className={`group h-full rounded-2xl liquid-glass liquid-glass-d${(i % 4) + 1} p-5`}>
                     <Icon className="h-5 w-5 text-sky-400 transition-transform duration-300 group-hover:scale-110" />
                     <p className="mt-3 text-sm font-bold text-white">{value.title}</p>
                     <p className="mt-1 text-xs leading-relaxed text-white/70">{value.desc}</p>
