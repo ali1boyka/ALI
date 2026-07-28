@@ -27,7 +27,7 @@ export function WhyUs() {
         <StaggerGroup className="mt-16 grid gap-px overflow-hidden rounded-3xl border border-navy-900/8 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((item, i) => (
             <StaggerItem key={item.title}>
-              <div className={`group h-full liquid-glass liquid-glass-flush liquid-glass-v${(i % 4) + 1} p-7`}>
+              <div className="group h-full liquid-glass liquid-glass-flush p-7">
                 <span className="font-display text-sky-400 text-sm font-bold transition-colors duration-300 group-hover:text-sky-300">
                   {String(i + 1).padStart(2, "0")}
                 </span>
