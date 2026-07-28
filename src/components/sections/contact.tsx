@@ -35,7 +35,7 @@ export function Contact() {
             </Reveal>
 
             <Reveal delay={0.2}>
-              <div className="mt-10 rounded-3xl liquid-glass liquid-glass-v1 p-6">
+              <div className="mt-10 rounded-3xl liquid-glass p-6">
                 <div className="flex items-center gap-3">
                   <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/10 text-sky-300">
                     <User className="h-5 w-5" />
