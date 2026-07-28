@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
+import { ParallaxShape } from "@/components/ui/parallax-shape";
 
 export function CtaBanner() {
   const t = useTranslations("cta");
@@ -16,8 +17,8 @@ export function CtaBanner() {
       <Container>
         <Reveal>
           <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-navy-900 to-navy-950 px-8 py-16 text-center sm:px-16">
-            <div
-              className="absolute inset-0"
+            <ParallaxShape
+              range={14}
               style={{
                 background:
                   "radial-gradient(60% 100% at 50% 0%, rgba(33,172,214,0.25) 0%, rgba(33,172,214,0) 70%)",

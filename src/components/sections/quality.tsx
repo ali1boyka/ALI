@@ -29,7 +29,7 @@ export function Quality() {
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
               {points.map((point, i) => (
                 <Reveal key={point} delay={0.25 + i * 0.08}>
-                  <div className="flex items-center gap-3 rounded-2xl liquid-glass px-4 py-3.5">
+                  <div className={`flex items-center gap-3 rounded-2xl liquid-glass liquid-glass-d${(i % 4) + 1} px-4 py-3.5`}>
                     <CheckCircle2 className="h-5 w-5 shrink-0 text-sky-400" />
                     <span className="text-sm font-semibold text-white/85">{point}</span>
                   </div>
