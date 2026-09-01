@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html,
+  body,
+  #root,
+  .jack-root {
+    background: #0c0c0c;
+  }
+
+  body {
+    font-family: var(--font-kanit), "Kanit", sans-serif;
+    color: #d7e2ea;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .jack-root :focus-visible {
+    outline: 2px solid #d7e2ea;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .hero-heading {
+    background: linear-gradient(180deg, #646973 0%, #bbccd7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  /* The CTA already owns `outline` as part of its visual design (a white
+     2px ring inset by 3px), so the focus indicator is drawn separately. */
+  .jack-cta:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: -3px;
+  }
+
+  .jack-cta:focus-visible::after {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border-radius: 9999px;
+    border: 2px solid #d7e2ea;
+  }
+}
